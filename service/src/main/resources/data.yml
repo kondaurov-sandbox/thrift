@@ -1,0 +1,8 @@
+records:
+ - { id: "1", title: "record 1" }
+ - { id: "2", title: "record 2" }
+ - { id: "3", title: "record 3" }
+tags:
+ - { id: "1", title: "tag 1" }
+ - { id: "2", title: "tag 2" }
+ - { id: "3", title: "tag 3" }
