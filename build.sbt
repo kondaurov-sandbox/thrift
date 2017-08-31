@@ -9,7 +9,8 @@ lazy val client: Project = (project in file("client"))
   )
   .settings(Common.commonSettings)
 
-lazy val service: Project = project in file("service")
+lazy val service: Project = (project in file("service"))
+  .dependsOn(interface)
 
 lazy val interface: Project = project in file("interface")
 

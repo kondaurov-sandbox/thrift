@@ -14,5 +14,4 @@ object FinagleClient {
     }, s"Can't get service for '$addr'")
   }
 
-
 }

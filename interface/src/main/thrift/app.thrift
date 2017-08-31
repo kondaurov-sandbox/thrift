@@ -17,18 +17,22 @@ service AppService {
   /**
   * Создать запись
   *
+  * throw exception - если не удается создать запись
+  *
   * @return - сгенерированный UUID новой записи
   * @param title - заголовок записи
-  * @throw exception - если не удается создать запись
+  *
   **/
   UUID insertRecord(1: string title)
 
   /**
   * Создать тег
   *
+  * throw exception - если не удается создать тег
+  *
   * @return - сгенерированный UUID нового тега
   * @param name - имя тега
-  * @throw exception - если не удается создать тег
+  *
   **/
   UUID insertTag(1: string name)
 
@@ -52,14 +56,15 @@ service AppService {
   /**
   * Связать запись с тегом
   *
-  * @throws, Exception если запись или тег не существуют
+  * throw Exception если запись или тег не существуют
+  *
   **/
   void link(1: string recordId, 2: string tagId)
 
   /**
   * Удалить связь записи с тегом
   *
-  * @throw Exception если связь не найдена
+  * throw Exception если связь не найдена
   **/
   void unlink(1: string recordId, 2: string tagId)
 
