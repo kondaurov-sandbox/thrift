@@ -6,6 +6,7 @@ import bintray.BintrayKeys._
 object Common {
 
   def publishSettings = Seq(
+    organization := "kondaurov.msg_service",
     resolvers ++= Seq(
       Resolver.sonatypeRepo("snapshots"),
       Resolver.bintrayRepo("kondaurovdev", "maven")
@@ -42,10 +43,9 @@ object Common {
     pomIncludeRepository := { _ => false }
   )
 
-  def commonSettings = Seq(
+  def scalaSettings = Seq(
     scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature"),
-    scalaVersion := "2.12.2",
-    organization := "kondaurov.msg_service"
+    scalaVersion := "2.12.2"
   )
 
   object Deps {

@@ -1,4 +1,4 @@
-addSbtPlugin("com.twitter" % "scrooge-sbt-plugin" % "4.18.0")
+addSbtPlugin("com.twitter" % "scrooge-sbt-plugin" % "4.19.0")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.2.2")
 
