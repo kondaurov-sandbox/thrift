@@ -45,7 +45,7 @@ object Common {
 
   def scalaSettings = Seq(
     scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature"),
-    scalaVersion := "2.12.2"
+    scalaVersion := "2.11.8"
   )
 
   object Deps {

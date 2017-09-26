@@ -1,4 +1,5 @@
-import com.twitter.scrooge.ScroogeSBT.autoImport.scroogeThriftSourceFolder
+import ru.livetex.LtNewSbt
+import ru.livetex.sbtutils.LtProject
 import sbt.Keys.resolvers
 import sbt._
 
@@ -24,7 +25,7 @@ lazy val service: Project = (project in file("service"))
       Resolver.sonatypeRepo("snapshots"),
       Resolver.bintrayRepo("kondaurovdev", "maven")
     ),
-    scroogeThriftSourceFolder in Compile := baseDirectory.value / "target" / "thrift_external",
+    scroogeThriftIncludeFolders in Compile += baseDirectory.in(interface).value / "target" / "thrift_external",
     scroogeThriftDependencies in Compile := Seq(
       "msg-service-interface"
     ),
@@ -35,16 +36,23 @@ lazy val service: Project = (project in file("service"))
   .settings(Common.scalaSettings)
   .dependsOn(interface)
 
-lazy val interface: Project = (project in file("interface"))
+lazy val interface: Project = LtProject.newProject("interface", "interface")
   .settings(
     organization := "thrift",
     name := "msg-service-interface",
-    version := "0.0.1-SNAPSHOT",
-    crossVersion := CrossVersion.Disabled,
-    autoScalaLibrary := false,
-    resourceDirectory in Compile := baseDirectory.value / "src" / "main" / "thrift"
+    version := "0.0.1-SNAPSHOT"
   )
+  .enablePlugins(LtNewSbt, LtPublishMavenSbt)
   .disablePlugins(ScroogeSBT)
+
+//lazy val interface: Project = LtProject.interface2("interface", "interface")
+//  .settings(
+//    organization := "thrift",
+//    name := "msg-service-interface",
+//    version := "0.0.1-SNAPSHOT"
+//  )
+//  .enablePlugins(LtThriftIfaceSbt)
+//  .disablePlugins(ScroogeSBT)
 
 lazy val rest: Project = (project in file("rest"))
   .settings(
